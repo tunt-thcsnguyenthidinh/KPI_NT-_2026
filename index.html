@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm Nang Tập Huấn KPI - THCS Nguyễn Thị Định by 28.9.2026</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a', // blue-900
+                        secondary: '#3b82f6', // blue-500
+                        accent: '#f59e0b', // amber-500
+                        background: '#f8fafc', // slate-50
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: theme('colors.background');
+            color: #334155;
+        }
+        .math-block {
+            background: #f1f5f9;
+            border-left: 4px solid theme('colors.secondary');
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        .nav-link.active {
+            background-color: theme('colors.primary');
+            color: white;
+        }
+        /* Hide scrollbar for sidebar but allow scroll */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-full md:w-72 bg-white shadow-xl md:fixed md:h-screen z-20 flex flex-col">
+        <div class="p-6 bg-primary text-white flex flex-col items-center justify-center text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-lg">
+                <i class="fas fa-school text-primary text-3xl"></i>
+            </div>
+            <h2 class="text-lg font-bold uppercase tracking-wide">THCS Nguyễn Thị Định</h2>
+            <p class="text-blue-200 text-xs mt-1">Cẩm nang đánh giá KPI Q3/2026</p>
+        </div>
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-4 flex flex-col gap-1 px-3">
+            <a href="#tong-quan" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-info-circle w-5 text-center"></i> Chương I: Tổng quan & Nguyên tắc
+            </a>
+            <a href="#cong-thuc" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-calculator w-5 text-center"></i> Chương II: Công thức KPI
+            </a>
+            <a href="#chi-tieu-20" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-chart-pie w-5 text-center"></i> Chương III & IV: Chỉ tiêu Xuất sắc
+            </a>
+            <a href="#trach-nhiem-tham-dinh" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-user-check w-5 text-center"></i> Trách nhiệm Thẩm định
+            </a>
+            <a href="#goi-y-minh-chung" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-folder-open w-5 text-center"></i> Chương V: Gợi ý Minh chứng
+            </a>
+            <a href="#quy-trinh" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-tasks w-5 text-center"></i> Chương VI & VII: Quy trình
+            </a>
+            <a href="#trach-nhiem" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-users-cog w-5 text-center"></i> Chương VIII: Trách nhiệm NV
+            </a>
+            <a href="#tieu-chi-xuat-sac" class="nav-link px-4 py-3 rounded-lg text-sm font-medium text-slate-600 hover:bg-blue-50 transition-colors flex items-center gap-3">
+                <i class="fas fa-star w-5 text-center text-accent"></i> Chương IX: Tiêu chí Xuất sắc
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 md:ml-72 p-4 md:p-8 lg:p-12 w-full max-w-6xl mx-auto">
+        
+        <!-- Hero Section -->
+        <header class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-8 md:p-12 text-white shadow-xl mb-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+                <i class="fas fa-book-reader text-9xl"></i>
+            </div>
+            <div class="relative z-10">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold tracking-wider uppercase mb-4 inline-block">
+                    Tài liệu Nội bộ - Quý III/2026 - Thiết kế và xây dựng Landingpage by Nguyễn Thanh Tú
+                </span>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
+                    Cẩm Nang Toàn Diện Về Đánh Giá KPI [28.9.2026]
+                </h1>
+                <p class="text-blue-100 text-lg md:text-xl max-w-3xl mb-6">
+                    Chuyển đổi từ đánh giá cảm tính sang đánh giá dựa trên hiệu suất công việc định lượng dành cho BGH, Giáo viên và Nhân viên Trường THCS Nguyễn Thị Định.
+                </p>
+                <div class="bg-black/20 rounded-lg p-4 text-sm max-w-4xl backdrop-blur-sm border border-white/10">
+                    <strong>Căn cứ:</strong> Luật Viên chức 2025, NĐ 233/2026/NĐ-CP, Quy định 366-QĐ/TW, Hướng dẫn 06-HD/BTCTU, CV 8113 & 8689/UBND-VHXH xã Long Hải và các văn bản chỉ đạo của Thành ủy, Đảng ủy
+                </div>
+            </div>
+        </header>
+
+        <!-- Chương I -->
+        <section id="tong-quan" class="mb-16 scroll-mt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-secondary flex items-center justify-center font-bold text-xl">I</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Khung Pháp Lý & Nguyên Tắc Cốt Lõi</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Sáu rõ -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                    <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                        <i class="fas fa-bullseye text-accent"></i> Nguyên tắc "Sáu Rõ"
+                    </h3>
+                    <ul class="grid grid-cols-2 gap-3">
+                        <li class="bg-blue-50 p-3 rounded-lg text-sm font-medium text-primary text-center">Rõ người</li>
+                        <li class="bg-blue-50 p-3 rounded-lg text-sm font-medium text-primary text-center">Rõ việc</li>
+                        <li class="bg-blue-50 p-3 rounded-lg text-sm font-medium text-primary text-center">Rõ thời gian</li>
+                        <li class="bg-blue-50 p-3 rounded-lg text-sm font-medium text-primary text-center">Rõ trách nhiệm</li>
+                        <li class="bg-blue-50 p-3 rounded-lg text-sm font-medium text-primary text-center">Rõ sản phẩm</li>
+                        <li class="bg-blue-50 p-3 rounded-lg text-sm font-medium text-primary text-center">Rõ thẩm quyền</li>
+                    </ul>
+                </div>
+
+                <!-- Tỷ trọng KPI -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                    <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                        <i class="fas fa-balance-scale text-accent"></i> Cơ cấu Điểm 100
+                    </h3>
+                    <div class="flex h-12 w-full rounded-lg overflow-hidden font-bold text-white text-sm">
+                        <div class="bg-secondary w-[30%] flex items-center justify-center">Phần A: 30đ</div>
+                        <div class="bg-primary w-[70%] flex items-center justify-center">Phần B (KPI): 70đ</div>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i><strong>Phần A (30 điểm):</strong> Đánh giá chính trị, đạo đức, lối sống, kỷ luật.</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i><strong>Phần B (70 điểm):</strong> Kết quả thực hiện nhiệm vụ KPI thực tế.</li>
+                        <li><i class="fas fa-exclamation-circle text-accent mr-2"></i><em>Hệ thống tự động đề xuất mức xếp loại (VD: >= 90 đạt Xuất sắc).</em></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                <h4 class="font-bold text-red-700 mb-1">Kiểm soát quyền lực Người đứng đầu</h4>
+                <p class="text-sm text-red-900">Hiệu trưởng chịu trách nhiệm giải trình nếu thay đổi mức xếp loại so với tự chấm hoặc đề xuất của Tổ. Có quyền đề xuất tạm đình chỉ cá nhân đùn đẩy, sợ trách nhiệm.</p>
+            </div>
+        </section>
+
+        <!-- Chương II -->
+        <section id="cong-thuc" class="mb-16 scroll-mt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-secondary flex items-center justify-center font-bold text-xl">II</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Kỹ Thuật & Công Thức Tính KPI</h2>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Rules Text -->
+                    <div>
+                        <h3 class="text-lg font-bold text-primary mb-3">1. Quy định Điểm & Độ khó</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex gap-4">
+                                <div class="flex-1 bg-slate-50 p-3 rounded border"><strong>Việc Thường Xuyên:</strong><br>10 điểm/đầu việc</div>
+                                <div class="flex-1 bg-slate-50 p-3 rounded border"><strong>Việc Đột Xuất:</strong><br>12 điểm/đầu việc</div>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                                <li><strong>Hệ số 1.0 (100%):</strong> Công việc thông thường.</li>
+                                <li><strong>Hệ số 1.1 (110%):</strong> Phối hợp nhiều bộ phận, khối lượng lớn.</li>
+                                <li><strong>Hệ số 1.2 (120%):</strong> Đặc biệt quan trọng, chuyên môn cao.</li>
+                            </ul>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-primary mt-6 mb-3">2. Phạt chậm tiến độ</h3>
+                        <ul class="list-disc pl-5 text-sm space-y-1 text-red-600">
+                            <li>Chậm 01-03 ngày: Tiến độ đạt <strong>80%</strong></li>
+                            <li>Chậm 04-05 ngày: Tiến độ đạt <strong>60%</strong></li>
+                            <li>Chậm >05 ngày / Không HT: Tiến độ đạt <strong>0%</strong></li>
+                        </ul>
+                        
+                        <h3 class="text-lg font-bold text-primary mt-6 mb-3">3. Điểm thưởng Nổi trội</h3>
+                        <p class="text-sm text-slate-600">Hoàn thành trước 50% hạn (hoặc gấp < 2 ngày) xuất sắc, HOẶC có sáng kiến áp dụng hiệu quả: <strong class="text-accent">+5% điểm thực tế việc đó</strong> (Tối đa thưởng 7đ/quý).</p>
+                    </div>
+
+                    <!-- Interactive Calculator -->
+                    <div class="bg-slate-800 rounded-xl p-6 text-white shadow-inner">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-blue-300">
+                            <i class="fas fa-laptop-code"></i> Trải nghiệm Tính Điểm 01 Việc
+                        </h3>
+                        <p class="text-xs text-slate-300 mb-4">Nhập thử các thông số để xem hệ thống phần mềm tính điểm như thế nào.</p>
+                        
+                        <div class="space-y-3">
+                            <div>
+                                <label class="text-xs uppercase font-bold text-slate-400">Loại công việc (Điểm chuẩn)</label>
+                                <select id="calc-base" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-sm focus:outline-none focus:border-secondary">
+                                    <option value="10">Thường xuyên (10 điểm)</option>
+                                    <option value="12">Đột xuất (12 điểm)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs uppercase font-bold text-slate-400">Hệ số độ khó</label>
+                                <select id="calc-multi" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-sm focus:outline-none focus:border-secondary">
+                                    <option value="1.0">1.0 (Thông thường)</option>
+                                    <option value="1.1">1.1 (Khối lượng lớn)</option>
+                                    <option value="1.2">1.2 (Đặc biệt phức tạp)</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-xs uppercase font-bold text-slate-400">% Tiến độ (Trọng số 30%)</label>
+                                    <input type="number" id="calc-prog" value="100" min="0" max="100" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-sm focus:outline-none focus:border-secondary">
+                                </div>
+                                <div>
+                                    <label class="text-xs uppercase font-bold text-slate-400">% Chất lượng (Trọng số 70%)</label>
+                                    <input type="number" id="calc-qual" value="100" min="0" max="100" class="w-full bg-slate-700 border border-slate-600 rounded p-2 text-sm focus:outline-none focus:border-secondary">
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 mt-2">
+                                <input type="checkbox" id="calc-bonus" class="rounded bg-slate-700">
+                                <label for="calc-bonus" class="text-xs text-accent">Công việc nổi trội / Sáng kiến (+5% thưởng)</label>
+                            </div>
+                            
+                            <button onclick="calculateSingleTask()" class="w-full bg-secondary hover:bg-blue-600 text-white font-bold py-2 rounded mt-4 transition-colors">
+                                Tính Toán
+                            </button>
+                            
+                            <!-- Result Display -->
+                            <div id="calc-result" class="hidden mt-4 p-4 bg-slate-900 rounded border border-slate-700 text-center">
+                                <div class="text-xs text-slate-400 mb-1">Điểm quy đổi thực tế của việc này:</div>
+                                <div id="calc-score" class="text-3xl font-bold text-green-400">0.00</div>
+                                <div id="calc-breakdown" class="text-[10px] text-slate-500 mt-2 font-mono"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <h4 class="text-sm font-bold text-slate-700 mb-2">Công thức tổng quy đổi về thang 70:</h4>
+                <div class="math-block text-sm">
+                    Điểm KPI cuối kỳ = MIN( 70 , (Tổng điểm thực tế B / Tổng điểm kế hoạch A) × 70 )<br>
+                    <span class="text-slate-500 italic">Hệ thống sẽ đảm bảo tính kịch trần 70 điểm nếu vượt kế hoạch.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chương III & IV -->
+        <section id="chi-tieu-20" class="mb-16 scroll-mt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-secondary flex items-center justify-center font-bold text-xl">III</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Quy Định Khống Chế 20% Xuất Sắc</h2>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 mb-6">
+                <p class="text-slate-600 mb-4">
+                    Theo quy định, tổng số cán bộ, viên chức xếp loại <strong>Hoàn thành xuất sắc nhiệm vụ (HTXS)</strong> không vượt quá <strong>20%</strong> tổng số nhân sự (đã loại trừ Hiệu trưởng do cấp trên đánh giá).
+                </p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead class="text-xs text-white uppercase bg-primary">
+                            <tr>
+                                <th class="px-4 py-3 rounded-tl-lg">Nhóm đối tượng</th>
+                                <th class="px-4 py-3">Thành phần chi tiết</th>
+                                <th class="px-4 py-3 text-center">Số lượng</th>
+                                <th class="px-4 py-3 text-center bg-blue-800">Chỉ tiêu HTXS</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-medium">1. Lãnh đạo (trừ HT)</td>
+                                <td class="px-4 py-3">02 Phó Hiệu trưởng</td>
+                                <td class="px-4 py-3 text-center">2</td>
+                                <td class="px-4 py-3 text-center font-bold text-secondary">01 (hoặc 0)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-medium">2. Cán bộ kiêm nhiệm</td>
+                                <td class="px-4 py-3">14 Tổ trưởng, Tổ phó CM</td>
+                                <td class="px-4 py-3 text-center">14</td>
+                                <td class="px-4 py-3 text-center font-bold text-secondary">03</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-medium">3. Giáo viên bình thường</td>
+                                <td class="px-4 py-3">GV bộ môn & GVCN</td>
+                                <td class="px-4 py-3 text-center">43</td>
+                                <td class="px-4 py-3 text-center font-bold text-secondary">08 (hoặc 09)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="px-4 py-3 font-medium">4. Nhân viên & LĐ</td>
+                                <td class="px-4 py-3">04 Hành chính + 03 Tạp vụ/BV</td>
+                                <td class="px-4 py-3 text-center">7</td>
+                                <td class="px-4 py-3 text-center font-bold text-secondary">01</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-blue-50 font-bold text-primary">
+                                <td class="px-4 py-3 rounded-bl-lg" colspan="2">TỔNG TOÀN TRƯỜNG (Trừ HT)</td>
+                                <td class="px-4 py-3 text-center">66</td>
+                                <td class="px-4 py-3 text-center rounded-br-lg">13 người (Đúng trần)</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="mt-4 p-3 bg-slate-50 border-l-4 border-accent text-sm text-slate-700">
+                    <strong>Nguyên tắc xét khi ngang điểm ranh giới:</strong> 
+                    1. Điểm KPI từ cao xuống thấp. 
+                    2. Ưu tiên việc độ khó 120%, có sáng kiến, bồi dưỡng HSG. 
+                    3. Bỏ phiếu kín.
+                </div>
+            </div>
+        </section>
+
+        <!-- Trách Nhiệm Thẩm Định -->
+        <section id="trach-nhiem-tham-dinh" class="mb-16 scroll-mt-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-200 pb-2">Phân Công Thẩm Định (Phần I & II)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tổ trưởng -->
+                <div class="bg-white p-6 rounded-xl border border-t-4 border-t-secondary shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-user-tie text-secondary"></i> Vòng 1: Tổ trưởng CM
+                    </h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><i class="fas fa-caret-right text-primary mr-2"></i><strong>Hướng dẫn & Duyệt:</strong> Thiết lập mục tiêu, kiểm tra độ khó (100%, 110%, 120%).</li>
+                        <li><i class="fas fa-caret-right text-primary mr-2"></i><strong>Thẩm định Minh chứng:</strong> Truy cập thư mục, đối chiếu đầu việc với minh chứng số.</li>
+                        <li><i class="fas fa-caret-right text-primary mr-2"></i><strong>Đánh giá tiến độ:</strong> Giám sát hạn chót, phạt giảm trừ nếu chậm.</li>
+                        <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i><strong>Trách nhiệm liên đới:</strong> Chịu trách nhiệm trước HT nếu để lọt minh chứng giả/khai khống.</li>
+                    </ul>
+                </div>
+                
+                <!-- Hiệu trưởng -->
+                <div class="bg-white p-6 rounded-xl border border-t-4 border-t-primary shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-user-shield text-primary"></i> Vòng 2: Hiệu trưởng
+                    </h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><i class="fas fa-caret-right text-secondary mr-2"></i><strong>Phúc tra:</strong> Kiểm tra xác suất tối thiểu 20% hồ sơ của từng tổ.</li>
+                        <li><i class="fas fa-caret-right text-secondary mr-2"></i><strong>Đánh giá trực tiếp:</strong> Chấm điểm các Phó HT và Tổ trưởng.</li>
+                        <li><i class="fas fa-caret-right text-secondary mr-2"></i><strong>Quyết định & Giải trình:</strong> Ra quyết định cuối cùng. Giải trình nếu khác kết quả tự chấm/đề xuất.</li>
+                        <li><i class="fas fa-caret-right text-secondary mr-2"></i><strong>Xử lý vi phạm:</strong> Phê bình, hạ bậc thi đua nếu nộp chậm hoặc sai lệch.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chương V -->
+        <section id="goi-y-minh-chung" class="mb-16 scroll-mt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-secondary flex items-center justify-center font-bold text-xl">V</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Gợi Ý KPI & Minh Chứng Theo Vị Trí</h2>
+            </div>
+            
+            <p class="text-slate-500 mb-4">Nhấp vào từng nhóm để xem chi tiết cách viết chỉ tiêu và đính kèm minh chứng.</p>
+
+            <div class="space-y-3">
+                <!-- Accordion Item 1 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden">
+                    <button onclick="toggleAccordion('acc1')" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 transition focus:outline-none font-bold text-primary">
+                        <span>1. Khối Giáo viên Giảng dạy & Chủ nhiệm</span>
+                        <i id="icon-acc1" class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="acc1" class="accordion-content bg-white">
+                        <div class="p-4 text-sm text-slate-600 space-y-2 border-t">
+                            <p><strong>KHBD & Học liệu số:</strong> Giáo án điện tử đúng chuẩn GDPT 2018 được duyệt trên hệ thống.</p>
+                            <p><strong>Bồi dưỡng hè:</strong> Bài thu hoạch chính trị đạt yêu cầu, Chứng nhận tập huấn SGK mới.</p>
+                            <p><strong>Công tác Chủ nhiệm:</strong> Kế hoạch lớp được BGH duyệt, Biên bản họp PHHS đủ chữ ký.</p>
+                            <p><strong>Khai giảng:</strong> Biên bản kiểm kê CSVC lớp, Ảnh trang trí, Nhật ký sinh hoạt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden">
+                    <button onclick="toggleAccordion('acc2')" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 transition focus:outline-none font-bold text-primary">
+                        <span>2. Khối Quản lý Kiêm nhiệm (Tổ trưởng/Phó)</span>
+                        <i id="icon-acc2" class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="acc2" class="accordion-content bg-white">
+                        <div class="p-4 text-sm text-slate-600 space-y-2 border-t">
+                            <p><strong>Cơ cấu:</strong> Kết hợp KPI chuyên môn (~60%) và KPI quản lý tổ (~40%).</p>
+                            <p><strong>Minh chứng Quản lý:</strong> Kế hoạch hoạt động tổ, Biên bản kiểm tra chuyên đề, Dấu mộc/Chữ ký duyệt KHBD của tổ viên, Biên bản họp tổ bỏ phiếu thi đua.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden">
+                    <button onclick="toggleAccordion('acc3')" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 transition focus:outline-none font-bold text-primary">
+                        <span>3. Khối Hành chính (Kế toán, Văn thư, Thư viện, Y tế)</span>
+                        <i id="icon-acc3" class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="acc3" class="accordion-content bg-white">
+                        <div class="p-4 text-sm text-slate-600 space-y-4 border-t">
+                            <div><strong>Kế toán:</strong> Bảng lương/phụ cấp có duyệt, Biên bản đối chiếu Kho bạc, Tờ trình dự toán.</div>
+                            <div><strong>Văn thư - Thủ quỹ:</strong> Nhật ký e-Office, Sổ quỹ tiền mặt khóa sổ, Biên bản bàn giao hồ sơ lớp 6.</div>
+                            <div><strong>Thư viện - Thiết bị:</strong> Biên bản kiểm kê hè, Link Google Sheets mượn trả, Sổ bàn giao.</div>
+                            <div><strong>Y tế:</strong> Kế hoạch khử khuẩn tủ thuốc, Bài tuyên truyền, File Excel dữ liệu BHYT.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden">
+                    <button onclick="toggleAccordion('acc4')" class="w-full flex justify-between items-center p-4 bg-slate-50 hover:bg-slate-100 transition focus:outline-none font-bold text-primary">
+                        <span>4. Khối Phục vụ / Người lao động</span>
+                        <i id="icon-acc4" class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="acc4" class="accordion-content bg-white">
+                        <div class="p-4 text-sm text-slate-600 space-y-2 border-t">
+                            <p><strong>Phục vụ/Vệ sinh:</strong> Biên bản kiểm tra vệ sinh hàng tuần của BGH/Đoàn, Ảnh cảnh quan.</p>
+                            <p><strong>Bảo vệ:</strong> Sổ nhật ký trực, Sổ theo dõi khách/phụ huynh ra vào, Phiếu bàn giao an toàn CSVC.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chương VI & VII -->
+        <section id="quy-trinh" class="mb-16 scroll-mt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-blue-100 text-secondary flex items-center justify-center font-bold text-xl">VI</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Quy Trình Lưu Trữ & 5 Bước Đánh Giá</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Quy trình lưu trữ minh chứng -->
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="font-bold text-primary mb-4">Chương VI: 5 Bước Lưu Trữ Minh Chứng Số</h3>
+                    <div class="relative border-l-2 border-blue-200 ml-3 space-y-6">
+                        <div class="relative pl-6">
+                            <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
+                            <h4 class="font-bold text-sm">Bước 1: Khởi tạo Thư mục gốc</h4>
+                            <p class="text-xs text-slate-500">Tạo `[HO_SO_MINH_CHUNG_QUY_III_2026]`, chia theo Tổ và Tên.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
+                            <h4 class="font-bold text-sm">Bước 2: Tạo thư mục con theo việc</h4>
+                            <p class="text-xs text-slate-500">VD: `[Viec_1_Giao_an]`</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
+                            <h4 class="font-bold text-sm">Bước 3: Đặt tên file chuẩn</h4>
+                            <p class="text-xs text-slate-500">VD: `Viec3_Bien_Ban_Hop_PHHS_12092026.pdf`</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute w-4 h-4 bg-secondary rounded-full -left-[9px] top-1"></div>
+                            <h4 class="font-bold text-sm">Bước 4: Nhúng Link (Drive)</h4>
+                            <p class="text-xs text-slate-500">Dán vào phần mềm đánh giá hoặc Mẫu 01.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute w-4 h-4 bg-accent rounded-full -left-[9px] top-1 shadow-lg shadow-accent/50"></div>
+                            <h4 class="font-bold text-sm text-accent">Bước 5: Thẩm định & Khóa (Read-Only)</h4>
+                            <p class="text-xs text-slate-500">Bảo mật hồ sơ sau khi duyệt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lịch trình đánh giá -->
+                <div class="bg-white rounded-xl shadow p-6 border border-slate-100">
+                    <h3 class="font-bold text-primary mb-4">Chương VII: Lịch Trình Đánh Giá Trường Học</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-100 text-primary text-xs font-bold py-1 px-2 rounded mt-0.5 min-w-[90px] text-center">01-03 Đầu Q</div>
+                            <div class="text-sm"><strong>Đăng ký mục tiêu:</strong> Cá nhân lên KPI trên phần mềm.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-100 text-primary text-xs font-bold py-1 px-2 rounded mt-0.5 min-w-[90px] text-center">Trước 08/09</div>
+                            <div class="text-sm"><strong>Tự chấm điểm:</strong> Mẫu 01-A/B & đính kèm link minh chứng.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-100 text-primary text-xs font-bold py-1 px-2 rounded mt-0.5 min-w-[90px] text-center">Trước 10/09</div>
+                            <div class="text-sm"><strong>Họp Tổ CM:</strong> Thảo luận công khai & Bỏ phiếu kín.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-100 text-primary text-xs font-bold py-1 px-2 rounded mt-0.5 min-w-[90px] text-center">Trước 13/09</div>
+                            <div class="text-sm"><strong>BGH Thẩm định:</strong> Hiệu trưởng ký phê duyệt xếp loại.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-green-100 text-green-700 text-xs font-bold py-1 px-2 rounded mt-0.5 min-w-[90px] text-center shadow-sm">Trước 15/09</div>
+                            <div class="text-sm"><strong>Báo cáo:</strong> Thông báo toàn trường, nộp Mẫu 02 lên cấp trên.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chương VIII & IX -->
+        <section id="tieu-chi-xuat-sac" class="mb-16 scroll-mt-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold text-xl shadow-lg">IX</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Điều Kiện Xếp Loại Hoàn Thành Xuất Sắc</h2>
+            </div>
+            
+            <div class="bg-gradient-to-r from-slate-900 to-primary text-white rounded-2xl p-6 md:p-8 shadow-xl relative overflow-hidden">
+                <i class="fas fa-medal absolute -bottom-10 -right-10 text-9xl text-white/10"></i>
+                
+                <h3 class="text-xl font-bold mb-4 text-accent">Đồng thời thỏa mãn 4 điều kiện:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl">
+                        <div class="font-bold text-lg mb-1 flex items-center gap-2">
+                            <i class="fas fa-sort-numeric-up-alt"></i> 1. Tổng điểm >= 90
+                        </div>
+                        <p class="text-xs text-slate-300">Tính cả phần A (30đ) và Phần B quy đổi (70đ).</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl">
+                        <div class="font-bold text-lg mb-1 flex items-center gap-2">
+                            <i class="fas fa-check-double"></i> 2. HT 100% Khối lượng
+                        </div>
+                        <p class="text-xs text-slate-300">Không có việc chậm > 5 ngày hoặc không đạt.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl">
+                        <div class="font-bold text-lg mb-1 flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> 3. >= 30% Vượt Trội
+                        </div>
+                        <p class="text-xs text-slate-300">Hoàn thành vượt mức cả tiến độ (trước hạn) & chất lượng.</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl">
+                        <div class="font-bold text-lg mb-1 flex items-center gap-2">
+                            <i class="fas fa-users"></i> 4. Lọt top 20%
+                        </div>
+                        <p class="text-xs text-slate-300">Nằm trong quota 20% của đơn vị (xếp hạng điểm).</p>
+                    </div>
+                </div>
+
+                <!-- Interactive 30% Checker -->
+                <div class="bg-white rounded-xl p-5 text-slate-800 shadow-inner max-w-2xl mx-auto">
+                    <h4 class="font-bold text-center mb-3">Công Cụ Kiểm Tra Điều Kiện 30% Vượt Trội</h4>
+                    <div class="flex flex-col md:flex-row gap-4 items-end">
+                        <div class="flex-1">
+                            <label class="text-xs font-bold text-slate-500 uppercase">Tổng số KPI đăng ký</label>
+                            <input type="number" id="check-total" value="6" min="1" class="w-full border border-slate-300 rounded p-2 focus:border-primary focus:ring-1 focus:ring-primary">
+                        </div>
+                        <div class="flex-1">
+                            <label class="text-xs font-bold text-slate-500 uppercase">Số KPI Vượt mức</label>
+                            <input type="number" id="check-exceed" value="2" min="0" class="w-full border border-slate-300 rounded p-2 focus:border-primary focus:ring-1 focus:ring-primary">
+                        </div>
+                        <button onclick="checkExcellence()" class="bg-accent hover:bg-orange-600 text-white font-bold py-2 px-6 rounded transition-colors h-[42px]">
+                            Kiểm Tra
+                        </button>
+                    </div>
+                    <div id="check-result-box" class="hidden mt-4 p-3 rounded text-center font-bold">
+                        <!-- Result injected by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chương 8 Trách nhiệm -->
+            <div id="trach-nhiem" class="mt-8 bg-blue-50 border border-blue-100 rounded-xl p-6 text-sm text-slate-700">
+                <h3 class="font-bold text-primary mb-2 text-lg">Chương VIII: Tự soi, Tự sửa</h3>
+                <p>Quá trình tự đánh giá của <strong>Giáo viên, Nhân viên</strong> phải gắn liền với tinh thần tự phê bình, tự soi chiếu đạo đức nghề nghiệp và ý thức trách nhiệm nêu gương. Phải chủ động cập nhật việc đột xuất vào hệ thống, tự chấm đúng hạn và cung cấp minh chứng rõ ràng.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-slate-400 text-sm border-t border-slate-200">
+            <p>Tài liệu lưu hành nội bộ - Trường THCS Nguyễn Thị Định &copy; Quý III/2026</p>
+            <p class="mt-1">Hệ thống đánh giá KPI tự động - Designed by Nguyễn Thanh Tú _ PHT trường THCS Nguyễn Thị Định</p>
+        </footer>
+
+    </main>
+
+    <!-- Custom Scripts -->
+    <script>
+        // --- Interactivity 1: Accordions ---
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // Toggle logic
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.style.padding = "0";
+                icon.classList.remove('rotate-180');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        // --- Interactivity 2: Active Nav Link highlight ---
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current) && current !== "") {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // --- Interactivity 3: KPI Calculator ---
+        function calculateSingleTask() {
+            const baseScore = parseFloat(document.getElementById('calc-base').value);
+            const multiplier = parseFloat(document.getElementById('calc-multi').value);
+            const progress = parseFloat(document.getElementById('calc-prog').value) / 100;
+            const quality = parseFloat(document.getElementById('calc-qual').value) / 100;
+            const isBonus = document.getElementById('calc-bonus').checked;
+
+            // Formula: Điểm thực hiện = Điểm chuẩn × (30% × Tiến độ % + 70% × Chất lượng %)
+            let performScore = baseScore * ((0.3 * progress) + (0.7 * quality));
+            
+            // Formula: Điểm quy đổi = Hệ số độ khó × Điểm thực hiện
+            let finalScore = multiplier * performScore;
+            
+            // Formula Bonus: +5% of actual score
+            let bonusAmount = 0;
+            if (isBonus) {
+                bonusAmount = finalScore * 0.05;
+                finalScore += bonusAmount;
+            }
+
+            // Display Logic
+            const resultBox = document.getElementById('calc-result');
+            const scoreDisplay = document.getElementById('calc-score');
+            const breakdownDisplay = document.getElementById('calc-breakdown');
+
+            scoreDisplay.innerText = finalScore.toFixed(2) + " điểm";
+            
+            let breakdownText = `[${baseScore} × (0.3×${progress} + 0.7×${quality})] × ${multiplier}`;
+            if (isBonus) breakdownText += ` + Thưởng(${bonusAmount.toFixed(2)})`;
+            breakdownDisplay.innerText = breakdownText;
+
+            resultBox.classList.remove('hidden');
+            
+            // Simple animation
+            scoreDisplay.style.transform = "scale(1.1)";
+            setTimeout(() => {
+                scoreDisplay.style.transform = "scale(1)";
+                scoreDisplay.style.transition = "transform 0.2s";
+            }, 200);
+        }
+
+        // --- Interactivity 4: 30% Excellence Checker ---
+        function checkExcellence() {
+            const total = parseInt(document.getElementById('check-total').value);
+            const exceed = parseInt(document.getElementById('check-exceed').value);
+            const resultBox = document.getElementById('check-result-box');
+
+            if (isNaN(total) || isNaN(exceed) || total <= 0) {
+                resultBox.className = "mt-4 p-3 rounded text-center font-bold bg-red-100 text-red-700 block";
+                resultBox.innerHTML = "Vui lòng nhập số liệu hợp lệ.";
+                return;
+            }
+
+            const percentage = (exceed / total) * 100;
+            
+            resultBox.classList.remove('hidden');
+            if (percentage >= 30) {
+                resultBox.className = "mt-4 p-3 rounded text-center font-bold bg-green-100 text-green-700 border border-green-300 block";
+                resultBox.innerHTML = `<i class="fas fa-check-circle"></i> Đạt: ${percentage.toFixed(1)}% (Đủ điều kiện xét Xuất sắc)`;
+            } else {
+                resultBox.className = "mt-4 p-3 rounded text-center font-bold bg-red-100 text-red-700 border border-red-300 block";
+                resultBox.innerHTML = `<i class="fas fa-times-circle"></i> Không đạt: ${percentage.toFixed(1)}% (Cần >= 30%)`;
+            }
+        }
+    </script>
+</body>
+</html>
